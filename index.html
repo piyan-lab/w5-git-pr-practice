@@ -56,6 +56,19 @@
       chatBox.scrollTop = chatBox.scrollHeight;
     }
 
+    function searchMessages(query) {
+      const messages = document.querySelectorAll('#chat-box .message');
+      const q = query.toLowerCase();
+      
+      messages.forEach(msg => {
+        if (msg.textContent.toLowerCase().includes(q)) {
+          msg.classList.remove('hidden');
+        } else {
+          msg.classList.add('hidden');
+        }
+      });
+    }
+
     document.getElementById('user-input').addEventListener('keypress', function(e) {
       if (e.key === 'Enter') sendMessage();
     });
